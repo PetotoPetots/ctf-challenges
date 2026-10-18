@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Strike Rappelz CTF — v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">&larr; كل التحديات</a>
+
+  <div class="eyebrow">Private Challenge &middot; v2</div>
+  <h1>Strike Rappelz CTF</h1>
+  <p class="sub">Web exploitation, black-box. Get past the perimeter and prove you reached the control panel.</p>
+
+  <div class="stat-rail">
+    <div class="stat"><div class="k">Category</div><div class="v">Web Exploitation</div></div>
+    <div class="stat"><div class="k">Difficulty</div><div class="v accent">Medium</div></div>
+    <div class="stat"><div class="k">Points</div><div class="v">500</div></div>
+  </div>
+
+  <section>
+    <h2>Brief</h2>
+    <div class="card brief">
+      <p>الإدارة واثقة إن السيرفر ده محمي كويس خلف طبقة دفاع أمامية. المطلوب تثبت العكس: تتجاوز الحماية وتوصل للوحة التحكم اللي وراها.</p>
+      <p>مفيش hints — التحدي black-box.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Target</h2>
+    <div class="target-row">
+      <code id="target-url">rz-playex.com/en/</code>
+      <button class="copy-btn" onclick="copyTarget()" id="copy-btn">Copy</button>
+    </div>
+    <p class="note">الهدف ده مخصص لهذا التحدي ومصرّح باختباره — شوف تصريح الصلاحية تحت.</p>
+  </section>
+
+  <section>
+    <h2>Proof of Solve</h2>
+    <div class="card">
+      <ol class="steps">
+        <li><span class="n">01</span><span class="t"><b>تجاوز الطبقة الأمامية</b><span>خطّي أي حاجة واقفة بينك وبين اللوحة.</span></span></li>
+        <li><span class="n">02</span><span class="t"><b>وصول للوحة التحكم</b><span>الوصول فعلياً للـ admin/control panel.</span></span></li>
+        <li><span class="n">03</span><span class="t"><b>Screenshot</b><span>صورة واضحة للوحة وانت داخل بيها، كإثبات.</span></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>Flag</h2>
+    <div class="flag-box">سلّم <b>الـ screenshot</b> بتاع اللوحة كإثبات حل (Proof of Solve) للتحدي ده.</div>
+  </section>
+
+  <section class="auth">
+    <h2>Authorization</h2>
+    <p>أنا صاحب هذا التحدي والـ target المذكور أعلاه. بصرّح رسمياً باختبار الهدف ده لغرض هذا الـ CTF الخاص، في حدود النطاق والقواعد المذكورة في الصفحة دي.</p>
+      <div class="sig">
+        <span>Issued by: <b>Challenge Owner</b></span>
+        <span>Scope: <b>rz-playex.com/en/ only</b></span>
+      </div>
+  </section>
+
+  <footer>Strike Rappelz Private CTF &middot; Internal use only</footer>
+
+</div>
+
+<script>
+  function copyTarget() {
+    const text = document.getElementById('target-url').textContent;
+    const btn = document.getElementById('copy-btn');
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy', 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(() => {
+        const range = document.createRange();
+        range.selectNode(document.getElementById('target-url'));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+      });
+    }
+  }
+</script>
+</body>
+</html>
